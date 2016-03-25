@@ -14,7 +14,7 @@ import base64
 import shutil
  
 mydnsip = '127.0.0.1'
-mydnsport = '5353'
+mydnsport = '5300'
 ipsetname = 'gfwlist'
 # Extra Domain;
 EX_DOMAIN=[ \
@@ -41,7 +41,7 @@ comment_pattern = '^\!|\[|^@@|^\d+\.\d+\.\d+\.\d+'
 domain_pattern = '([\w\-\_]+\.[\w\.\-\_]+)[\/\*]*' 
 tmpfile = '/tmp/gfwlisttmp'
 # do not write to router internal flash directly
-outfile = './dnsmasq_list.conf'
+outfile = './output/gfw_list.conf'
 #outfile = './dnsmasq_list.conf'
  
 fs =  file(outfile, 'w')
