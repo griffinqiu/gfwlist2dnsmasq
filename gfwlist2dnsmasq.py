@@ -39,6 +39,7 @@ baseurl = 'https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt'
 # match comments/title/whitelist/ip address
 comment_pattern = '^\!|\[|^@@|^\d+\.\d+\.\d+\.\d+'
 domain_pattern = '([\w\-\_]+\.[\w\.\-\_]+)[\/\*]*' 
+ddns_domain_pattern = '.*(ddns|f3322).*'
 tmpfile = '/tmp/gfwlisttmp'
 # do not write to router internal flash directly
 outfile = './output/gfw_list.conf'
@@ -71,6 +72,8 @@ for line in tfs.readlines():
 	else:
 		domain = re.findall(domain_pattern, line)
 		if domain:
+			if re.match(ddns_domain_pattern, domain[0]):
+				continue
 			try:
 				found = domainlist.index(domain[0])
 				print domain[0] + ' exists.'
